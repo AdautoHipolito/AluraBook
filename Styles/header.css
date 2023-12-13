@@ -1,0 +1,157 @@
+.cabecalho__menu-hamburguer{
+    width: 24px;
+    height: 24px;
+    background-image: url("../asseds/Menu.svg");
+    /* Esse display eh para deixar em bloco e em linha */
+    display: inline-block;
+    /* ele nao fica repetindo a imagem */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/* o combinador tio procura outro elemento que esteja em seguida dele */
+/* O sinal de mais procura um elemento que esteja dentro  */
+.container__botao:checked ~ .container__rotulo > .cabecalho__menu-hamburguer{
+    background-image: url(../asseds/Menu\ Aberto.svg);
+} 
+.container__botao:checked ~ .container__rotulo {
+    background:var(--azul-degrade);
+}
+.cabecalho{
+    background-color: var(--branco);
+    /* o display flex ele transformou o cabcalho em container e com o justify cada um foi para um lado, no HTML foi dividido em 2 DIV de mesma classe*/
+    display: flex;
+    justify-content: space-between;
+    /* esse position libera voce a trabalhar com varias posicoes ( direita,cima) */
+    position: relative;
+}
+/* com essa eles aalinharam no centro todos os elementos da classe container */
+.container{
+    display: flex;
+    align-items: center;
+}
+.container__img{
+    padding: 1em;
+}
+.lista__menu{
+    /* esse display foi utilizado para esconder/transparente as categorias que estavam aparecendo */
+    display: none;
+    /* esse position absulute junto com position relative + top 100% voce consegue deixar alista debaixo do hambuerguer */
+    position: absolute;
+    top: 100%;
+    width: 70vw;
+}
+/* essa classe esta sendo usada para aparecer as listas dentro do menu hamburguer */
+/* o :checked eh uma pseudoclasse, ele verifica se ta preenchido o checkbox */
+/* o tio eh o combinador css, por exemplo, se o botao tiver check, ele vai procurar a classe selecionada */
+.container__botao:checked ~ .lista__menu{
+    display: block;
+}
+.lista__menutitulo,
+.lista__menuitem{
+    /* padding: faz espacamento interno */
+    padding: 1em;
+    background-color: var(--branco);
+}
+.lista__menutitulo{
+    /* mudar cor da fonte */
+    color: var(--laranja);
+    font-weight: 700;
+}
+.lista__menulink{
+    background:var(--azul-degrade);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+}
+.container__botao{
+    display: none;
+}
+.container__titulo{
+    /* Foi colocado esse display none para sumir o trecho ALURABOOKS do MOBILE */
+    display: none;
+}
+.opcoes{
+    display: none;
+}
+.container__texto{
+    display: none;
+}
+/* Isso eh a media query, que serve para deixar em varios tamanhos em qualquer dispositivo */
+@media screen and (min-width:1024px) {
+    .container__titulo,
+    .container__titulo--negrito{
+        font-family: var(--font-secundaria);
+        font-size: 30px;
+    }
+    .container__titulo{
+        font-weight: 400;
+        /* Esse display block fooi colocado para a palavra ALURABOOKS aparecer no dispositivo maior */
+        display: block;
+    }
+    .container__titulo--negrito{
+        font-weight: 700;
+    }
+    .opcoes{
+        display: flex;
+    }
+    .opcoes__item{
+        padding: 2em 2em;
+        text-transform: uppercase;
+    }
+    .opcoes__link{
+        text-decoration: none;
+        color: var(--preto);
+    }
+    .container__img-transparente{
+        display: none;
+    }
+    .cabecalho__menu-hamburguer{
+        display: none;
+    }
+    /* Essa opcao serviu para deixar o menu hamburguer visivel o TYPE:CHECKBOX */
+    .opcoes__botao:checked ~ .lista__menu{
+        display: block;
+        /* Esse width auto serve para preencher somente o espaco das escritas */
+        width: auto;
+    }
+    .opcoes__botao{
+        display: none;
+    }
+    /* Explicacao: Quando voce clica na opcao categorias ele vai ficar azul. Quando a opcoes botao eh acionada(CHECKED, a opcoes__rotulo eh acionada que com o sinal de maior o sistema procura dentro da opcoes__rotulo a opcao__item) */
+    /* ESTILIZACAO */
+    .opcoes__botao:checked ~ .opcoes__rotulo > .opcoes__item{
+        background: var(--azul-degrade);
+        color: var(--branco);
+    }
+    
+    .opcoes__item{
+        padding: 2em 1em;
+    }
+    /* O hover funciona quando o usario passa oo mouse por cima da escrita */
+    .lista__menuitem:hover{
+        background: var(--azul-degrade);
+    }
+    .lista__menuitem:hover > .lista__menulink{
+        -webkit-text-fill-color: var(--branco);
+        text-decoration: none;
+    }
+}
+@media screen and (min-width: 1728px) {
+    .container__link{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--preto);
+    }
+    .cabecalho{
+        /* Nesse caso foi dado um espacamento dos lados (direto e esquerdo) */
+        padding: 0 2em;
+    }
+    .opcoes{
+        margin-right: auto;
+    }
+    .container__texto{
+        display: block;
+    }
+}

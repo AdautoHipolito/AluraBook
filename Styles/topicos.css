@@ -1,0 +1,48 @@
+.topicos{
+    background: var(--azul-degrade);
+    text-align: center;
+    padding: 1em 0;
+}
+.topicos__titulo{
+    color: var(--branco);
+    font-weight: 300;
+    margin-bottom: 0.5em;
+}
+.topicos__lista{
+    /* O display flex e o flex-wrap fazem a quebra de linha e nao deixa os elementos sairem das telas */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.topicos__itens{
+    margin: 2em 0.5em;
+}
+.topicos__link{
+    text-decoration: none;
+    color: var(--branco);
+    background: var(--laranja);
+    padding: 1em;
+    font-size: 14px;
+    font-weight: 700;
+}
+@media screen and (min-width: 1024px) {
+    .topicos__titulo{
+        font-size: 24px;
+    }
+    .topicos__link{
+        font-size: 24px;
+    }
+    /* Ao passar o mouse nos topicos a cor ficoude fundo ficou branca e as escritas laranjas */
+    .topicos__link:hover{
+        color: var(--laranja);
+        background-color: var(--branco);
+    }
+}
+
+@media screen and (min-width: 1728px) {
+    .topicos{
+        padding: 3em 25vw;
+    }
+
+    
+}
